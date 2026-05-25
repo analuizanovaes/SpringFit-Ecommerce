@@ -5,7 +5,7 @@ Sistema de gerenciamento para uma loja de artigos esportivos, desenvolvido em li
 ## 🎓 Contexto Acadêmico
 Projeto desenvolvido para a disciplina de **Estrutura de Dados** do curso de **Análise e Desenvolvimento de Sistemas (ADS)** do **Centro Universitário UniEuro**.
 * **Professor:** Jorge Osvaldo Alves de Lima Torres
-* **Desenvolvedoras:** Ana Luiza Fernandes Novaes e Sthefanny 
+* **Desenvolvedoras:** Ana Luiza Fernandes Novaes e Sthefanny Ramos Parrini
 
 ## ⚙️ Estruturas de Dados Implementadas
 O sistema utiliza as seguintes estruturas para ditar as regras de negócio da loja:
