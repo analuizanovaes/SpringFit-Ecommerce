@@ -1,0 +1,54 @@
+void menuFila(FilaExpedicao *f) {
+    int op = -1;
+    int idBusca;
+
+    do {
+        system("cls || clear");
+        printf("--- Fila de Envio de Pedidos (Expedicao) ---\n");
+        printf("1. Novo Pedido Concluido (Inserir no Final)\n");
+        printf("2. Enviar Proximo Pedido (Remover do Inicio)\n");
+        printf("3. Buscar Pedido por ID\n");
+        printf("4. Mostrar Fila de Espera Atual\n");
+        printf("0. Voltar ao Menu Principal\n");
+        printf("===========================================\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &op);
+
+        switch (op) {
+            case 1:
+                // Agora chamamos diretamente a funcao enqueue que criamos no arquivo separado
+                enqueue(f);
+                break;
+                
+            case 2:
+                // Agora chamamos a funcao dequeue passando o ponteiro da fila
+                dequeue(f);
+                break;
+                
+            case 3:
+                // Agora chamamos a funcao buscarPedido passando o ponteiro da fila
+                buscarPedido(f);
+                break;
+                
+            case 4:
+                // Agora chamamos a funcao exibirFila passando o ponteiro da fila
+                exibirFila(f);
+                break;
+                
+            case 0:
+                printf("\nVoltando ao menu principal...\n");
+                break;
+                
+            default:
+                printf("\nOpcao invalida!\n");
+                break;
+        }
+        
+        if (op != 0) {
+            printf("\nPressione ENTER para continuar...");
+            getchar(); // Captura o ENTER pendente do scanf
+            getchar(); // Aguarda o usuario pressionar ENTER de fato
+        }
+        
+    } while (op != 0);
+}
