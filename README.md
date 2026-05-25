@@ -1,4 +1,4 @@
-# 🏋️‍♀️ SpringFit - Sistema de E-commerce
+# 🏋️‍♀️ SpringFit - Sistema de E-commerce Para Roupas e Acessórios de Academia
 
 Sistema de gerenciamento para uma loja de artigos esportivos, desenvolvido em linguagem C. O projeto aplica na prática conceitos fundamentais de Estruturas de Dados para solucionar desafios reais de um e-commerce.
 
