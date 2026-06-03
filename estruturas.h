@@ -1,47 +1,47 @@
 #ifndef ESTRUTURAS_H
 #define ESTRUTURAS_H
 
-// --- DADOS BASE DA LOJA ---
+// --- ENTIDADES BASE DO SISTEMA ---
 
-// Ficha com os dados básicos de cada peça de roupa ou acessório
+// Estrutura de dados para representação dos atributos de um Produto.
 typedef struct {
     int id;
     char nome[50];
     float preco;
 } Produto;
 
-// Ficha para guardar o resumo de um pedido finalizado pelo cliente
+// Estrutura de dados para consolidação e faturamento de um Pedido.
 typedef struct {
     int idPedido;
     float valorTotal;
 } Pedido;
 
-// --- NÓS (As caixinhas que vão segurar nossos dados na memória) ---
+// --- DEFINIÇÃO DOS NÓS (NODES) DAS ESTRUTURAS DE DADOS ---
 
-// Usado no Carrinho (Lista Simples) e no Histórico (Pilha)
-// Como é simples, a gente só precisa de um ponteiro para ir pro próximo item
+// Nó para Lista Simplesmente Encadeada (LSE) e Pilha (Stack).
+// Mantém um ponteiro de encadeamento unidirecional para o próximo nó.
 typedef struct NoSimples {
     Produto produto;
     struct NoSimples* proximo;
 } NoSimples;
 
-// Usado no Catálogo (Lista Dupla) e nas Promoções (Lista Circular)
-// Tem ponteiro pra ir e pra voltar (por isso é duplo), facilita a navegação
+// Nó para Lista Duplamente Encadeada (LDE) e Lista Circular.
+// Possui ponteiros bidirecionais para permitir a travessia e manipulação em ambos os sentidos.
 typedef struct NoDuplo {
     Produto produto;
     struct NoDuplo* anterior;
     struct NoDuplo* proximo;
 } NoDuplo;
 
-// Usado na Expedição (Fila)
-// Guarda o pedido fechado e aponta para o próximo pedido que está na fila de espera
+// Nó para Fila (Queue) com política FIFO (First-In, First-Out).
+// Encapsula o Pedido e mantém a referência para o próximo nó da fila de expedição.
 typedef struct NoFila {
     Pedido pedido;
     struct NoFila* proximo;
 } NoFila;
 
-// Usado no Controle de Estoque (Árvore Binária)
-// Além do produto e da quantidade, tem dois caminhos (esquerda/direita) para organizar as buscas rápido
+// Nó para Árvore Binária de Busca (BST - Binary Search Tree).
+// Armazena a quantidade em estoque e mantém ramificações para subárvore esquerda e direita.
 typedef struct NoArvore {
     Produto produto;
     int quantidadeEmEstoque;
