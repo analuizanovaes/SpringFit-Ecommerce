@@ -124,7 +124,7 @@ NoArvore* removerDaArvore(NoArvore* raiz, int idRemover) {
         // Cenário 1 e 2: Nó Folha (0 filhos) ou apenas 1 filho
         if (raiz->esquerda == NULL) {
             NoArvore* noTemp = raiz->direita;
-            free(raiz); // Liberação de memória [cite: 39]
+            free(raiz); // Liberação de memória
             printf("\n+------------------------------------------------+\n");
             printf("| [SISTEMA] Produto removido do estoque!         |\n");
             printf("+------------------------------------------------+\n");
