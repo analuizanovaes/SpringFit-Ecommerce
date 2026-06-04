@@ -3,90 +3,97 @@
 #include <string.h>
 #include "estruturas.h"
 
-// 1. INSERÇÃO NO INÍCIO DA LISTA DUPLAMENTE ENCADEADA
-// Utiliza ponteiro duplo (**) para alterar o endereço raiz da lista (passagem por referência).
+/* ============================================================================
+ * ESTRUTURA: LISTA DUPLAMENTE ENCADEADA (LDE)
+ * Aplicação Prática: Catálogo de Produtos
+ * Comportamento: Cada nó armazena uma referência para o sucessor (proximo) 
+ * e para o predecessor (anterior), permitindo navegação bidirecional linear.
+ * ============================================================================ */
+
+// 1. INSERÇÃO NO INÍCIO DA LISTA (Head Insertion)
 void inserirNoCatalogo(NoDuplo** catalogo, Produto novoProduto) {
-    // Alocação dinâmica de memória para o novo nó
+    // Aloca memória para a criação de um novo componente da lista
     NoDuplo* novoNo = (NoDuplo*) malloc(sizeof(NoDuplo));
-
-    // Atribuição dos dados ao novo nó
     novoNo->produto = novoProduto;
-    novoNo->anterior = NULL; // Sendo o primeiro nó, o ponteiro de retrocesso é nulo
+    
+    // Por ser inserido no início, não há nó anterior a ele
+    novoNo->anterior = NULL; 
 
-    // O ponteiro de avanço do novo nó aponta para a antiga raiz da lista
+    // O novo nó aponta para a raiz atual da lista
     novoNo->proximo = *catalogo; 
-
-    // Se a lista já contiver elementos, o nó anterior da antiga raiz aponta para o novo nó
+    
+    // Se a lista não estiver vazia, a raiz atual passa a apontar para trás (para o novo nó)
     if (*catalogo != NULL) { 
         (*catalogo)->anterior = novoNo; 
     }
 
-    // Atualiza a raiz do catálogo para o novo nó recém-criado
+    // Atualiza a referência principal do catálogo para o nó recém-criado
     *catalogo = novoNo;
-    printf("Produto '%s' inserido com sucesso!\n", novoProduto.nome);
+    printf("  [+] Produto '%s' inserido com sucesso!\n", novoProduto.nome);
 }
 
-// 2. EXIBIÇÃO E NAVEGAÇÃO BIDIRECIONAL
+// 2. TRAVESSIA BIDIRECIONAL (Exibição Linear)
 void exibirCatalogo(NoDuplo* catalogo) {
     if (catalogo == NULL) {
-        printf("O catálogo está vazio!\n");
+        printf("  [!] O catalogo esta vazio!\n");
         return;
     }
 
     NoDuplo* atual = catalogo;
     NoDuplo* ultimo = NULL;
 
-    printf("\n--- Navegação Direta (Avanço) ---\n");
+    printf("\n  --- Navegacao Direta (Avanco via ponteiro 'proximo') ---\n");
     while (atual != NULL) {
-        printf("ID: %d | %s | R$ %.2f\n", atual->produto.id, atual->produto.nome, atual->produto.preco);
-        ultimo = atual; // Armazena a referência do último nó visitado para o retorno
-        atual = atual->proximo; // Navega para o próximo nó
+        printf("  ID: %d | %s | R$ %.2f\n", atual->produto.id, atual->produto.nome, atual->produto.preco);
+        ultimo = atual; // Guarda a referência do nó atual antes de pular para o próximo
+        atual = atual->proximo; 
     }
 
-    printf("\n--- Navegação Reversa (Retorno) ---\n");
-    // Utiliza a referência 'ultimo' para percorrer a lista de trás para frente usando o ponteiro 'anterior'
+    printf("\n  --- Navegacao Reversa (Retorno via ponteiro 'anterior') ---\n");
+    // Utiliza a variável 'ultimo' resgatada do laço anterior para percorrer a lista de trás para frente
     while (ultimo != NULL) {
-        printf("ID: %d | %s | R$ %.2f\n", ultimo->produto.id, ultimo->produto.nome, ultimo->produto.preco);
+        printf("  ID: %d | %s | R$ %.2f\n", ultimo->produto.id, ultimo->produto.nome, ultimo->produto.preco);
         ultimo = ultimo->anterior; 
     }
 }
 
-// 3. BUSCA SEQUENCIAL POR ID
+// 3. BUSCA SEQUENCIAL (Busca Linear)
 NoDuplo* buscarNoCatalogo(NoDuplo* catalogo, int idBusca) {
     NoDuplo* atual = catalogo;
     
-    // Percorre a lista linearmente até encontrar o ID correspondente
+    // Varredura linear: percorre do primeiro ao último elemento até encontrar correspondência
     while (atual != NULL) { 
         if (atual->produto.id == idBusca) {
-            return atual; // Retorna o endereço do nó encontrado
+            return atual; 
         }
         atual = atual->proximo;
     }
-    return NULL; // Retorna nulo se o elemento não for encontrado
+    return NULL; // Retorna nulo indicando que o conjunto percorrido não contém o ID
 }
 
-// 4. REMOÇÃO DE NÓ E LIBERAÇÃO DE MEMÓRIA
+// 4. REMOÇÃO E MANUTENÇÃO DE PONTEIROS DUPLOS
 void removerDoCatalogo(NoDuplo** catalogo, int idRemover) {
     NoDuplo* noRemover = buscarNoCatalogo(*catalogo, idRemover);
 
     if (noRemover == NULL) {
-        printf("Produto ID %d não encontrado para remoção.\n", idRemover);
+        printf("  [!] Produto ID %d nao encontrado para remocao.\n", idRemover);
         return;
     }
 
-    // Reajuste de ponteiros para desconectar o nó a ser removido
+    // Reajuste 1: Desconecta a referência do nó predecessor
     if (noRemover->anterior != NULL) {
         noRemover->anterior->proximo = noRemover->proximo; 
     } else {
-        // Se o nó anterior é nulo, o nó a ser removido é a raiz da lista
+        // Se não possui anterior, trata-se do primeiro nó. A raiz deve ser deslocada.
         *catalogo = noRemover->proximo;
     }
 
+    // Reajuste 2: Desconecta a referência do nó sucessor
     if (noRemover->proximo != NULL) {
         noRemover->proximo->anterior = noRemover->anterior; 
     }
 
-    // Desalocação do espaço de memória do nó removido para evitar vazamento (memory leak)
+    // Auditoria de Memória: Liberação obrigatória do espaço alocado
     free(noRemover);
-    printf("Produto removido do catálogo com sucesso!\n");
+    printf("  [-] Produto removido do catalogo com sucesso!\n");
 }
