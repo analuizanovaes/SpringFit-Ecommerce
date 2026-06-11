@@ -20,18 +20,17 @@ O sistema não utiliza bibliotecas preexistentes. Toda a manipulação de memór
 
 Para compilar e rodar o projeto em um ambiente Linux ou no terminal do Windows (via GCC), utilize o comando abaixo na raiz do repositório para unificar e compilar todos os módulos:
 
-```bash
+```
 gcc main.c estoque_bst.c catalogo.c carrinho.c pilha_historico.c fila_pedidos.c promocoes.c -o springfit
 Em seguida, execute o sistema gerado:
 
 No Windows:
-
-Bash
 ./springfit.exe
-No Linux / macOS:
 
-Bash
+No Linux / macOS:
 ./springfit
+```
+
 🛠️ Boas Práticas Adotadas
 Modularização: Separação estrita entre definição de interfaces (.h) e implementação lógica (.c).
 
