@@ -22,18 +22,21 @@ Para compilar e rodar o projeto em um ambiente Linux ou no terminal do Windows (
 
 ```
 gcc main.c estoque_bst.c catalogo.c carrinho.c pilha_historico.c fila_pedidos.c promocoes.c -o springfit
+```
 Em seguida, execute o sistema gerado:
 
 No Windows:
+```
 ./springfit.exe
+```
 
 No Linux / macOS:
+```
 ./springfit
 ```
 
-🛠️ Boas Práticas Adotadas
+## 🛠️ Boas Práticas Adotadas
 Modularização: Separação estrita entre definição de interfaces (.h) e implementação lógica (.c).
 
-Memory Safety: Tratamento de ponteiros nulos e limpeza rigorosa de memória com free() para evitar memory leaks após as operações de faturamento e limpeza de carrinho.
-
-UX de Terminal: Interface interativa blindada contra inputs inválidos do usuário.
+**Memory Safety:** Tratamento de ponteiros nulos e limpeza rigorosa de memória com free() para evitar memory leaks após as operações de faturamento e limpeza de carrinho.
+**UX de Terminal:** Interface interativa blindada contra inputs inválidos do usuário.
