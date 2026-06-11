@@ -56,5 +56,3 @@ Em seguida, execute o binário gerado:
 * **Modularização:** Separação estrita entre a definição de interfaces (`.h`) e a implementação da lógica de negócio (`.c`), facilitando a manutenção do código.
 * **Memory Safety:** Tratamento de ponteiros nulos e limpeza rigorosa de memória com o uso de `free()` para evitar *memory leaks* após as operações de faturamento, deleções na BST e esvaziamento de carrinhos.
 * **UX de Terminal:** Interface interativa e resiliente, blindada contra travamentos e *inputs* inválidos do usuário durante a navegação.
-
-```
