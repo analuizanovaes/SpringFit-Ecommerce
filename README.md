@@ -1,4 +1,4 @@
-# 🏋️‍♀️ SpringFit - E-commerce de Artigos Esportivos
+# 🏋️‍♀️ SpringFit - E-commerce de Roupas e Acessórios de Academia
 
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 ![GCC](https://img.shields.io/badge/gcc-%231A2C37.svg?style=for-the-badge&logo=gnu&logoColor=white)
