@@ -45,7 +45,7 @@ void desenfileirar_pedido(FilaExpedicao* f) {
         f->fim = NULL; // Aterramento necessario se a fila secar
     }
     
-    printf("| [v] Pedido #%-4d faturado e liberado para envio aos correios!     |\n", 
+    printf("| [v] Pedido #%-4d faturado e liberado para envio aos correios!      |\n", 
            temp->pedido.idPedido);
            
     free(temp); 

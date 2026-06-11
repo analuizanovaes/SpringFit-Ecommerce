@@ -125,7 +125,7 @@ int main() {
                 
                 if (enc != NULL) {
                     printf("| Encontrado: %-54s |\n", enc->produto.nome);
-                    printf("| Preco: R$ %6.2f | Em Estoque: %-3d unid.                          |\n", 
+                    printf("| Preco: R$ %6.2f | Em Estoque: %-3d unid.                           |\n", 
                            enc->produto.preco, enc->quantidadeEmEstoque);
                 } else {
                     printf("| [!] Produto com ID %-4d nao localizado na arvore binaria.          |\n", idBusca);
@@ -152,7 +152,7 @@ int main() {
                         push_historico(&historico, pEstoque->produto, qtdAdd); 
                         pEstoque->quantidadeEmEstoque -= qtdAdd; 
                         
-                        printf("| [+] %2d unid. de %-25s adicionada(s)!            |\n", 
+                        printf("| [+] %2d unid. de %-25s adicionada(s)!           |\n", 
                                qtdAdd, pEstoque->produto.nome);
                     } else {
                         printf("| [!] Quantidade incorreta ou limite de estoque excedido.            |\n");
@@ -194,7 +194,7 @@ int main() {
                     NoArvore* pEstoque = buscar_bst(estoque, acRemovida.produto.id);
                     if (pEstoque != NULL) pEstoque->quantidadeEmEstoque += acRemovida.quantidade;
                     
-                    printf("| [-] Desfeito: %2d unid. de %-25s devolvida!       |\n", 
+                    printf("| [-] Desfeito: %2d unid. de %-25s devolvida!     |\n", 
                            acRemovida.quantidade, acRemovida.produto.nome);
                 } else {
                     printf("| [!] Falha: Nada para desfazer. A pilha de historico esta vazia.    |\n");

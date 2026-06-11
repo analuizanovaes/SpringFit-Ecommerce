@@ -54,7 +54,7 @@ float exibir_carrinho_e_calcular_total(NoSimples* cabeca) {
     
     while (temp != NULL) {
         float subtotal = temp->produto.preco * temp->quantidade;
-        printf("| * %-2dx %-28s | R$ %8.2f | Sub: %7.2f |\n", 
+        printf("| * %-2dx %-28s | R$ %8.2f | Sub: %7.2f    |\n", 
                temp->quantidade, temp->produto.nome, temp->produto.preco, subtotal);
         total += subtotal;
         temp = temp->proximo;
