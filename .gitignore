@@ -1,0 +1,9 @@
+# Arquivos compilados e executáveis
+*.o
+*.exe
+*.out
+*.app
+
+# Pastas de IDEs (VS Code, CodeBlocks, etc)
+.vscode/
+.idea/
